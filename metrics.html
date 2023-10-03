@@ -748,6 +748,86 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'sam
 </dd></dl>
 
 </section>
+<section id="optical-flow">
+<h2>Optical Flow<a class="headerlink" href="#optical-flow" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="kornia.metrics.aepe">
+<span class="sig-prename descclassname"><span class="pre">kornia.metrics.</span></span><span class="sig-name descname"><span class="pre">aepe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/metrics/endpoint_error.html#aepe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.metrics.aepe" title="Link to this definition">#</a></dt>
+<dd><p>Create a function that calculates the average endpoint error (AEPE) between 2 flow maps.</p>
+<p>AEPE is the endpoint error between two 2D vectors (e.g., optical flow).
+Given a h x w x 2 optical flow map, the AEPE is:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{AEPE}=\frac{1}{hw}\sum_{i=1, j=1}^{h, w}\sqrt{(I_{i,j,1}-T_{i,j,1})^{2}+(I_{i,j,2}-T_{i,j,2})^{2}}\]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the input flow map with shape <span class="math notranslate nohighlight">\((*, 2)\)</span>.</p></li>
+<li><p><strong>target</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the target flow map with shape <span class="math notranslate nohighlight">\((*, 2)\)</span>.</p></li>
+<li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – Specifies the reduction to apply to the
+output: <code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction will be applied,
+<code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided by the number of elements
+in the output, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be summed.
+Default:  <code class="code docutils literal notranslate"><span class="pre">&quot;mean&quot;</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the computed AEPE as a scalar.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ones</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aepe</span><span class="p">(</span><span class="n">ones</span><span class="p">,</span> <span class="mf">1.2</span> <span class="o">*</span> <span class="n">ones</span><span class="p">)</span>
+<span class="go">tensor(0.2828)</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>Reference:</dt><dd><p><a class="reference external" href="https://link.springer.com/content/pdf/10.1007/s11263-010-0390-2.pdf">https://link.springer.com/content/pdf/10.1007/s11263-010-0390-2.pdf</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="kornia.metrics.AEPE">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.metrics.</span></span><span class="sig-name descname"><span class="pre">AEPE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/metrics/endpoint_error.html#AEPE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.metrics.AEPE" title="Link to this definition">#</a></dt>
+<dd><p>Computes the average endpoint error (AEPE) between 2 flow maps.</p>
+<p>EPE is the endpoint error between two 2D vectors (e.g., optical flow).
+Given a h x w x 2 optical flow map, the AEPE is:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{AEPE}=\frac{1}{hw}\sum_{i=1, j=1}^{h, w}\sqrt{(I_{i,j,1}-T_{i,j,1})^{2}+(I_{i,j,2}-T_{i,j,2})^{2}}\]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – Specifies the reduction to apply to the
+output: <code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction will be applied,
+<code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided by the number of elements
+in the output, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be summed.
+Default:  <code class="code docutils literal notranslate"><span class="pre">'mean'</span></code></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>input: <span class="math notranslate nohighlight">\((*, 2)\)</span>.</p></li>
+<li><p>target <span class="math notranslate nohighlight">\((*, 2)\)</span>.</p></li>
+<li><p>output: <span class="math notranslate nohighlight">\((1)\)</span>.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">input1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">epe</span> <span class="o">=</span> <span class="n">AEPE</span><span class="p">(</span><span class="n">reduction</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">epe</span> <span class="o">=</span> <span class="n">epe</span><span class="p">(</span><span class="n">input1</span><span class="p">,</span> <span class="n">input2</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
 <section id="monitoring">
 <h2>Monitoring<a class="headerlink" href="#monitoring" title="Link to this heading">#</a></h2>
 <dl class="py class">
@@ -843,6 +923,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'sam
 <li><a class="reference internal" href="#kornia.metrics.ssim3d"><code class="docutils literal notranslate"><span class="pre">ssim3d()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.metrics.SSIM"><code class="docutils literal notranslate"><span class="pre">SSIM</span></code></a></li>
 <li><a class="reference internal" href="#kornia.metrics.SSIM3D"><code class="docutils literal notranslate"><span class="pre">SSIM3D</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#optical-flow">Optical Flow</a><ul>
+<li><a class="reference internal" href="#kornia.metrics.aepe"><code class="docutils literal notranslate"><span class="pre">aepe()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.metrics.AEPE"><code class="docutils literal notranslate"><span class="pre">AEPE</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#monitoring">Monitoring</a><ul>
