@@ -416,9 +416,10 @@
 <div class="viewcode-block" id="line_segment_transfer_error_one_way">
 <a class="viewcode-back" href="../../../geometry.homography.html#kornia.geometry.homography.line_segment_transfer_error_one_way">[docs]</a>
 <span class="k">def</span> <span class="nf">line_segment_transfer_error_one_way</span><span class="p">(</span><span class="n">ls1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">ls2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">H</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">squared</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return transfer error in image 2 for line segment correspondences given the homography matrix. Line segment</span>
-<span class="sd">    end points are reprojected into image 2, and point-to-line error is calculted w.r.t. line, induced by line</span>
-<span class="sd">    segment in image 2. See :cite:`homolines2001` for details.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return transfer error in image 2 for line segment correspondences given the homography matrix.</span>
+
+<span class="sd">    Line segment end points are reprojected into image 2, and point-to-line error is calculated w.r.t. line,</span>
+<span class="sd">    induced by line segment in image 2. See :cite:`homolines2001` for details.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        ls1: line segment correspondences from the left images with shape</span>

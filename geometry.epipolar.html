@@ -783,7 +783,7 @@ avoid ambiguity with torch.nn.functional.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>K</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the camera matrix with the instrinsics with shape <span class="math notranslate nohighlight">\((B, 3, 3)\)</span>.</p></li>
+<li><p><strong>K</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the camera matrix with the intrinsics with shape <span class="math notranslate nohighlight">\((B, 3, 3)\)</span>.</p></li>
 <li><p><strong>R</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – The rotation matrix with shape <span class="math notranslate nohighlight">\((B, 3, 3)\)</span>.</p></li>
 <li><p><strong>t</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – The translation vector with shape <span class="math notranslate nohighlight">\((B, 3, 1)\)</span>.</p></li>
 </ul>
@@ -817,7 +817,7 @@ avoid ambiguity with torch.nn.functional.</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.epipolar.intrinsics_like">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.epipolar.</span></span><span class="sig-name descname"><span class="pre">intrinsics_like</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">focal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/epipolar/projection.html#intrinsics_like"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.epipolar.intrinsics_like" title="Link to this definition">#</a></dt>
-<dd><p>Return a 3x3 instrinsics matrix, with same size as the input.</p>
+<dd><p>Return a 3x3 intrinsics matrix, with same size as the input.</p>
 <p>The center of projection will be based in the input image size.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

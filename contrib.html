@@ -633,7 +633,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 <dt class="sig sig-object py" id="kornia.contrib.visual_prompter.VisualPrompter.preprocess_image">
 <span class="sig-name descname"><span class="pre">preprocess_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/contrib/visual_prompter.html#VisualPrompter.preprocess_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.contrib.visual_prompter.VisualPrompter.preprocess_image" title="Link to this definition">#</a></dt>
 <dd><p>Normalize and pad a tensor.</p>
-<p>For normalize the tensor: will priorize the <cite>mean</cite> and <cite>std</cite> passed as argument, if None will use the default
+<p>For normalize the tensor: will prioritize the <cite>mean</cite> and <cite>std</cite> passed as argument, if None will use the default
 Sam Dataset values.</p>
 <p>For pad the tensor: Will pad the tensor into the right and bottom to match with the size of
 <cite>self.model.image_encoder.img_size</cite></p>

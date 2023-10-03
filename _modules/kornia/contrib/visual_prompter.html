@@ -406,7 +406,7 @@
     <span class="k">def</span> <span class="nf">preprocess_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">mean</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">std</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Normalize and pad a tensor.</span>
 
-<span class="sd">        For normalize the tensor: will priorize the `mean` and `std` passed as argument, if None will use the default</span>
+<span class="sd">        For normalize the tensor: will prioritize the `mean` and `std` passed as argument, if None will use the default</span>
 <span class="sd">        Sam Dataset values.</span>
 
 <span class="sd">        For pad the tensor: Will pad the tensor into the right and bottom to match with the size of</span>
