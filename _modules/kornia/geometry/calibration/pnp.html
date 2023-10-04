@@ -466,7 +466,7 @@
 
     <span class="k">if</span> <span class="p">(</span><span class="n">weights</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)):</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;If weights is not None, then weights should be an instance &quot;</span>
+            <span class="s2">&quot;If weights is not None, then weights should be an instance &quot;</span>
             <span class="sa">f</span><span class="s2">&quot;of torch.Tensor. Type of weights is </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="p">)</span>
 
@@ -483,14 +483,12 @@
 
     <span class="k">if</span> <span class="n">img_points</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">accepted_dtypes</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;img_points must have one of the following dtypes </span><span class="si">{</span><span class="n">accepted_dtypes</span><span class="si">}</span><span class="s2">. &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;Currently it has </span><span class="si">{</span><span class="n">img_points</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;img_points must have one of the following dtypes </span><span class="si">{</span><span class="n">accepted_dtypes</span><span class="si">}</span><span class="s2">. Currently it has </span><span class="si">{</span><span class="n">img_points</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">.&quot;</span>
         <span class="p">)</span>
 
     <span class="k">if</span> <span class="n">intrinsics</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">accepted_dtypes</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;intrinsics must have one of the following dtypes </span><span class="si">{</span><span class="n">accepted_dtypes</span><span class="si">}</span><span class="s2">. &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;Currently it has </span><span class="si">{</span><span class="n">intrinsics</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;intrinsics must have one of the following dtypes </span><span class="si">{</span><span class="n">accepted_dtypes</span><span class="si">}</span><span class="s2">. Currently it has </span><span class="si">{</span><span class="n">intrinsics</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">.&quot;</span>
         <span class="p">)</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">world_points</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">world_points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">):</span>
@@ -524,10 +522,10 @@
     <span class="n">s</span> <span class="o">=</span> <span class="n">_torch_linalg_svdvals</span><span class="p">(</span><span class="n">world_points_norm</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">s</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">svd_eps</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;The last singular value of one/more of the elements of the batch is smaller &quot;</span>
+            <span class="s2">&quot;The last singular value of one/more of the elements of the batch is smaller &quot;</span>
             <span class="sa">f</span><span class="s2">&quot;than </span><span class="si">{</span><span class="n">svd_eps</span><span class="si">}</span><span class="s2">. This function cannot be used if all world_points (of any &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;element of the batch) lie on a line or if all world_points (of any &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;element of the batch) lie on a plane.&quot;</span>
+            <span class="s2">&quot;element of the batch) lie on a line or if all world_points (of any &quot;</span>
+            <span class="s2">&quot;element of the batch) lie on a plane.&quot;</span>
         <span class="p">)</span>
 
     <span class="n">intrinsics_inv</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">intrinsics</span><span class="p">)</span>

@@ -329,7 +329,7 @@
 
 <span class="kn">import</span> <span class="nn">itertools</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
@@ -422,7 +422,7 @@
         <span class="n">depth</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="n">activation</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Module</span><span class="p">]</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">GELU</span><span class="p">,</span>
         <span class="n">drop_path</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
-        <span class="n">downsample</span><span class="p">:</span> <span class="n">Module</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">downsample</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Module</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">use_checkpoint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">conv_expand_ratio</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">4.0</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -495,7 +495,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">attention_biases</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_heads</span><span class="p">,</span> <span class="n">attn_offset_size</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s1">&#39;attention_bias_idxs&#39;</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">persistent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">attention_bias_idxs</span><span class="p">:</span> <span class="n">Tensor</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ab</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ab</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">build_attention_bias</span><span class="p">(</span><span class="n">resolution</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
@@ -594,7 +594,7 @@
         <span class="n">mlp_ratio</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">4.0</span><span class="p">,</span>
         <span class="n">drop</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
         <span class="n">drop_path</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
-        <span class="n">downsample</span><span class="p">:</span> <span class="n">Module</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">downsample</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Module</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">use_checkpoint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">local_conv_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
         <span class="n">activation</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Module</span><span class="p">]</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">GELU</span><span class="p">,</span>
@@ -675,7 +675,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">img_size</span> <span class="o">=</span> <span class="n">img_size</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mobile_sam</span> <span class="o">=</span> <span class="n">mobile_sam</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">neck</span><span class="p">:</span> <span class="n">Module</span> <span class="o">|</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">neck</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Module</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">mobile_sam</span><span class="p">:</span>
             <span class="c1"># MobileSAM adjusts the stride to match the total stride of other ViT backbones</span>
             <span class="c1"># used in the original SAM (stride 16)</span>
@@ -831,7 +831,9 @@
             <span class="n">pretrained</span> <span class="o">=</span> <span class="s2">&quot;in1k&quot;</span>
 
         <span class="n">url</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;in22k&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/wkcn/TinyViT-model-zoo/releases/download/checkpoints/tiny_vit_5m_22k_distill.pth&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;in22k&quot;</span><span class="p">:</span> <span class="p">(</span>
+                <span class="s2">&quot;https://github.com/wkcn/TinyViT-model-zoo/releases/download/checkpoints/tiny_vit_5m_22k_distill.pth&quot;</span>
+            <span class="p">),</span>
             <span class="s2">&quot;in1k&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/wkcn/TinyViT-model-zoo/releases/download/checkpoints/tiny_vit_5m_22kto1k_distill.pth&quot;</span><span class="p">,</span>
         <span class="p">}[</span><span class="n">pretrained</span><span class="p">]</span>
         <span class="n">model</span> <span class="o">=</span> <span class="n">_load_pretrained</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
@@ -854,7 +856,9 @@
             <span class="n">pretrained</span> <span class="o">=</span> <span class="s2">&quot;in1k&quot;</span>
 
         <span class="n">url</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;in22k&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/wkcn/TinyViT-model-zoo/releases/download/checkpoints/tiny_vit_11m_22k_distill.pth&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;in22k&quot;</span><span class="p">:</span> <span class="p">(</span>
+                <span class="s2">&quot;https://github.com/wkcn/TinyViT-model-zoo/releases/download/checkpoints/tiny_vit_11m_22k_distill.pth&quot;</span>
+            <span class="p">),</span>
             <span class="s2">&quot;in1k&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/wkcn/TinyViT-model-zoo/releases/download/checkpoints/tiny_vit_11m_22kto1k_distill.pth&quot;</span><span class="p">,</span>
         <span class="p">}[</span><span class="n">pretrained</span><span class="p">]</span>
         <span class="n">model</span> <span class="o">=</span> <span class="n">_load_pretrained</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
@@ -882,7 +886,9 @@
                 <span class="n">pretrained</span> <span class="o">=</span> <span class="s2">&quot;in1k_512&quot;</span>
 
         <span class="n">url</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;in22k&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/wkcn/TinyViT-model-zoo/releases/download/checkpoints/tiny_vit_21m_22k_distill.pth&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;in22k&quot;</span><span class="p">:</span> <span class="p">(</span>
+                <span class="s2">&quot;https://github.com/wkcn/TinyViT-model-zoo/releases/download/checkpoints/tiny_vit_21m_22k_distill.pth&quot;</span>
+            <span class="p">),</span>
             <span class="s2">&quot;in1k&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/wkcn/TinyViT-model-zoo/releases/download/checkpoints/tiny_vit_21m_22kto1k_distill.pth&quot;</span><span class="p">,</span>
             <span class="s2">&quot;in1k_384&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/wkcn/TinyViT-model-zoo/releases/download/checkpoints/tiny_vit_21m_22kto1k_384_distill.pth&quot;</span><span class="p">,</span>
             <span class="s2">&quot;in1k_512&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/wkcn/TinyViT-model-zoo/releases/download/checkpoints/tiny_vit_21m_22kto1k_512_distill.pth&quot;</span><span class="p">,</span>

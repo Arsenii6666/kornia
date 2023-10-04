@@ -372,10 +372,9 @@
     <span class="n">out_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="p">(</span><span class="n">patch_size</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pad</span> <span class="o">-</span> <span class="p">(</span><span class="n">ksize</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="n">stride</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="n">out_size</span> <span class="o">!=</span> <span class="n">num_spatial_bins</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Patch size </span><span class="si">{</span><span class="n">patch_size</span><span class="si">}</span><span class="s2"> is incompatible with </span><span class="se">\</span>
-<span class="s2">            requested number of spatial bins </span><span class="si">{</span><span class="n">num_spatial_bins</span><span class="si">}</span><span class="s2"> </span><span class="se">\</span>
-<span class="s2">            for SIFT descriptor. Usually it happens when patch size is too small</span><span class="se">\</span>
-<span class="s2">            for num_spatial_bins specified&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Patch size </span><span class="si">{</span><span class="n">patch_size</span><span class="si">}</span><span class="s2"> is incompatible with             requested number of spatial bins&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">num_spatial_bins</span><span class="si">}</span><span class="s2">             for SIFT descriptor. Usually it happens when patch size is too small     &quot;</span>
+            <span class="s2">&quot;       for num_spatial_bins specified&quot;</span>
         <span class="p">)</span>
     <span class="k">return</span> <span class="n">ksize</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">pad</span>
 

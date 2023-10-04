@@ -407,8 +407,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">allow_flash</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">FLASH_AVAILABLE</span><span class="p">:</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                <span class="s1">&#39;FlashAttention is not available. For optimal speed, &#39;</span>
-                <span class="s1">&#39;consider installing torch &gt;= 2.0 or flash-attn.&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;FlashAttention is not available. For optimal speed, consider installing torch &gt;= 2.0 or flash-attn.&#39;</span><span class="p">,</span>
                 <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">enable_flash</span> <span class="o">=</span> <span class="n">allow_flash</span> <span class="ow">and</span> <span class="n">FLASH_AVAILABLE</span>

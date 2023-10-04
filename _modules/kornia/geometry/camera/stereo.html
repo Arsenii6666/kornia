@@ -399,37 +399,35 @@
 
         <span class="k">if</span> <span class="n">rectified_left_camera</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
             <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Expected each &#39;rectified_left_camera&#39; to be of shape (3, 4).&quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">rectified_left_camera</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">.&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Expected each &#39;rectified_left_camera&#39; to be of shape (3, 4).Got </span><span class="si">{</span><span class="n">rectified_left_camera</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
 
         <span class="k">if</span> <span class="n">rectified_right_camera</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
             <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Expected each &#39;rectified_right_camera&#39; to be of shape (3, 4).&quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">rectified_right_camera</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">.&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Expected each &#39;rectified_right_camera&#39; to be of shape (3, 4).Got </span><span class="si">{</span><span class="n">rectified_right_camera</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
 
         <span class="c1"># Ensure same devices for cameras.</span>
         <span class="k">if</span> <span class="n">rectified_left_camera</span><span class="o">.</span><span class="n">device</span> <span class="o">!=</span> <span class="n">rectified_right_camera</span><span class="o">.</span><span class="n">device</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Expected &#39;rectified_left_camera&#39; and &#39;rectified_right_camera&#39; &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;to be on the same devices.&quot;</span>
+                <span class="s2">&quot;Expected &#39;rectified_left_camera&#39; and &#39;rectified_right_camera&#39; &quot;</span>
+                <span class="s2">&quot;to be on the same devices.&quot;</span>
                 <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">rectified_left_camera</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">rectified_right_camera</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
 
         <span class="c1"># Ensure same dtypes for cameras.</span>
         <span class="k">if</span> <span class="n">rectified_left_camera</span><span class="o">.</span><span class="n">dtype</span> <span class="o">!=</span> <span class="n">rectified_right_camera</span><span class="o">.</span><span class="n">dtype</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Expected &#39;rectified_left_camera&#39; and &#39;rectified_right_camera&#39; to&quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;have same dtype.&quot;</span>
+                <span class="s2">&quot;Expected &#39;rectified_left_camera&#39; and &#39;rectified_right_camera&#39; to&quot;</span>
+                <span class="s2">&quot;have same dtype.&quot;</span>
                 <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">rectified_left_camera</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">rectified_right_camera</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
 
         <span class="c1"># Ensure all intrinsics parameters (fx, fy, cx, cy) are the same in both cameras.</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">rectified_left_camera</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">rectified_right_camera</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">])):</span>
             <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Expected &#39;left_rectified_camera&#39; and &#39;rectified_right_camera&#39; to have&quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;same parameters except for the last column.&quot;</span>
+                <span class="s2">&quot;Expected &#39;left_rectified_camera&#39; and &#39;rectified_right_camera&#39; to have&quot;</span>
+                <span class="s2">&quot;same parameters except for the last column.&quot;</span>
                 <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">rectified_left_camera</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="w"> </span><span class="p">:,</span><span class="w"> </span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">rectified_right_camera</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="w"> </span><span class="p">:,</span><span class="w"> </span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
 
@@ -572,13 +570,13 @@
 
     <span class="k">if</span> <span class="n">disparity_tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Expected dimension 1 of &#39;disparity_tensor&#39; to be 1 for as single channeled disparity map.&quot;</span>
+            <span class="s2">&quot;Expected dimension 1 of &#39;disparity_tensor&#39; to be 1 for as single channeled disparity map.&quot;</span>
             <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">disparity_tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span>
         <span class="p">)</span>
 
     <span class="k">if</span> <span class="n">disparity_tensor</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float16</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">):</span>
         <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Expected &#39;disparity_tensor&#39; to have dtype torch.float16, torch.float32 or torch.float64.&quot;</span>
+            <span class="s2">&quot;Expected &#39;disparity_tensor&#39; to have dtype torch.float16, torch.float32 or torch.float64.&quot;</span>
             <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">disparity_tensor</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="p">)</span>
 
@@ -633,10 +631,10 @@
     <span class="c1"># Final check that everything went well.</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">points</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
         <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Something went wrong in `reproject_disparity_to_3D`. Expected the final output&quot;</span>
+            <span class="s2">&quot;Something went wrong in `reproject_disparity_to_3D`. Expected the final output&quot;</span>
             <span class="sa">f</span><span class="s2">&quot;to be of shape </span><span class="si">{</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span><span class="w"> </span><span class="n">rows</span><span class="p">,</span><span class="w"> </span><span class="n">cols</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="sa">f</span><span class="s2">&quot;But the computed point cloud had shape </span><span class="si">{</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">. &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;Please ensure input are correct. If this is an error, please submit an issue.&quot;</span>
+            <span class="s2">&quot;Please ensure input are correct. If this is an error, please submit an issue.&quot;</span>
         <span class="p">)</span>
     <span class="k">return</span> <span class="n">points</span></div>
 
