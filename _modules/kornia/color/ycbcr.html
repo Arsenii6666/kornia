@@ -427,7 +427,7 @@
     <span class="n">r</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">1.403</span> <span class="o">*</span> <span class="n">cr_shifted</span>
     <span class="n">g</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="mf">0.714</span> <span class="o">*</span> <span class="n">cr_shifted</span> <span class="o">-</span> <span class="mf">0.344</span> <span class="o">*</span> <span class="n">cb_shifted</span>
     <span class="n">b</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">1.773</span> <span class="o">*</span> <span class="n">cb_shifted</span>
-    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">],</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">],</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></div>
 
 
 
